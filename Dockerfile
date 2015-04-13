@@ -1,5 +1,5 @@
 FROM ringo/scientific:6.5
-MAINTAINER Wim De Meester <deepskywim@gmail.com>
+MAINTAINER Wim De Meester <wim.demeester@ster.kuleuven.be>
 
 # Update all packages
 RUN yum -y update
@@ -45,6 +45,6 @@ VOLUME /var/lib/mysql
 # Start mysql
 EXPOSE 3306
 RUN /usr/bin/mysql_install_db
-COPY www.deepskylog.org.sql /www.deepskylog.org.sql
+COPY CDP.sql /CDP.sql
 
 CMD ["/startServices.sh"]
