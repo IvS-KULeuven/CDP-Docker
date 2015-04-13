@@ -6,16 +6,16 @@ Docker can be easily installed on Linux machines. On Mac or Windows, download [b
 Before executing the following commands, start boot2docker on your Mac or Windows machine.
 
 ## Making the mysql Data Volume container
-`docker build -t="mysqlMiri:latest" mysql-container`
+`docker build -t="mysqlmiri:latest" mysql-container`
 
 ## Run the Data Volume container
-`docker run -d --name mysqlMiri mysqliMiri:latest tail -f /dev/null`
+`docker run -d --name mysqlmiri mysqlmiri:latest tail -f /dev/null`
 
 ## Making the docker container
 `docker build -t miri:latest .`
 
 ## Running the docker container
-`docker run -v /lhome/wim/Work/MIRI/sourcecode:/var/www/html --volumes-from mysqlMiri -t -p 80:80 -p 3306:3306 miri:latest`
+`docker run -v /lhome/wim/Work/MIRI/sourcecode:/var/www/html --volumes-from mysqlmiri -t -p 80:80 -p 3306:3306 miri:latest`
 
 ## Find out the IP address of the webserver for the Miri webserver
 * Mac: `boot2docker ip` (returns 192.168.59.103)
