@@ -30,7 +30,7 @@ RUN yum-config-manager --enable remi
 RUN yum -y install mysql mysql-devel mysql-server compat-mysql51
 
 # Install php 5.6
-RUN yum -y --enablerepo=remi,remi-php56 install php php-runtime php-xml php-mbstring php-mcrypt php-cli php-gd php-pdo php-mysql
+RUN yum -y --enablerepo=remi,remi-php56 install php php-xml php-mbstring php-mcrypt php-cli php-gd php-pdo php-mysql
 
 # Start httpd
 EXPOSE 80
