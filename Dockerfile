@@ -25,6 +25,7 @@ RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
 RUN rpm -Uhv remi-release-6.rpm
 RUN yum -y install yum-utils
 RUN yum-config-manager --enable remi
+RUN yum-config-manager --enable remi-php56
 
 # Install mysql
 RUN yum -y install mysql mysql-devel mysql-server compat-mysql51
