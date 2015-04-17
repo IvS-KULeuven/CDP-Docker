@@ -1,4 +1,5 @@
 #!/bin/bash
+yum -y update
 tail -F /var/log/httpd/error_log &
 mysql_install_db &
 /usr/bin/mysqld_safe &
