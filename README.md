@@ -17,6 +17,18 @@ Before executing the following commands, start boot2docker on your Mac or Window
 ## Running the docker container
 `docker run -v /lhome/wim/Work/MIRI/sourcecode:/var/www/html --volumes-from mysqlmiri -t -p 80:80 -p 3306:3306 miri:latest`
 
+## Save the state of the docker container
+From time to time, you want to save the state of the container. Possible reasons are:
+
++ There are some Scientific Linux updates that are installed every time.
++ You changed some things in the database and you want to have these changes available next time your start up the container.
+
+The command to save the state is:
+
+    docker commit `docker ps | grep miri | awk '{print $1;}'` miri:latest
+
+
+
 ## Find out the IP address of the webserver for the Miri webserver
 * Mac: `boot2docker ip` (returns 192.168.59.103)
 * Windows: `boot2docker.exe ip`
