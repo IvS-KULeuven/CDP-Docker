@@ -1,5 +1,16 @@
 #!/bin/bash
-yum -y update
+# Check if there is a network connection on the host machine.
+SERVERIP=134.58.117.134
+
+ping -c 3 $SERVERIP > /dev/null 2>&1
+if [ $? -eq 0 ]
+then
+  echo "Installing Scientific Linux updates"
+  yum -y update
+else
+  echo "No network found, not installing Scientific Linux updates"
+fi
+
 tail -F /var/log/httpd/error_log &
 mysql_install_db &
 /usr/bin/mysqld_safe &
