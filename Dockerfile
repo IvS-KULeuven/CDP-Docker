@@ -1,5 +1,5 @@
-FROM ringo/scientific:6.5
-MAINTAINER Wim De Meester <wim.demeester@ster.kuleuven.be>
+FROM scientificlinux/sl:6
+LABEL Wim De Meester <wim.demeester@ster.kuleuven.be>
 
 # Update all packages
 RUN yum -y update
@@ -10,6 +10,9 @@ RUN yum -y upgrade
 
 # Add extra repository
 RUN yum -y install yum-conf-sl-other
+
+# Install wget
+RUN yum -y install wget
 
 # Add epel repository
 RUN cd /tmp
