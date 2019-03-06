@@ -1,5 +1,5 @@
-FROM ringo/scientific:6.5
-MAINTAINER Wim De Meester <wim.demeester@ster.kuleuven.be>
+FROM scientificlinux/sl:6
+LABEL Wim De Meester <wim.demeester@ster.kuleuven.be>
 
 # Update all packages
 RUN yum -y update
@@ -11,6 +11,9 @@ RUN yum -y upgrade
 # Add extra repository
 RUN yum -y install yum-conf-sl-other
 
+# Install wget
+RUN yum -y install wget
+
 # Add epel repository
 RUN cd /tmp
 RUN wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
@@ -21,17 +24,14 @@ RUN yum -y update
 RUN yum -y install httpd
 
 # Add remi repository
-RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-RUN rpm -Uhv remi-release-6.rpm
+RUN rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
 RUN yum -y install yum-utils
-RUN yum-config-manager --enable remi
-RUN yum-config-manager --enable remi-php56
 
 # Install mysql
 RUN yum -y install mysql mysql-devel mysql-server compat-mysql51
 
 # Install php 5.6
-RUN yum -y --enablerepo=remi,remi-php56 install php php-xml php-mbstring php-mcrypt php-cli php-gd php-pdo php-mysql
+RUN yum -y install php56w php56w-mbstring php56w-mcrypt php56w-gd php56w-pdo php56w-mysql
 
 # Start httpd
 EXPOSE 80
